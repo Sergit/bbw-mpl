@@ -203,6 +203,7 @@ IGL_INLINE bool igl::min_quad_with_fixed_precompute(
       Eigen::MatrixXd AuuDense;
       AuuDense = Eigen::MatrixXd(Auu);
       data.llt.compute(AuuDense);
+      Auu = AuuDense.sparseView();
       switch(data.llt.info())
       {
         case Eigen::Success:
@@ -232,6 +233,7 @@ IGL_INLINE bool igl::min_quad_with_fixed_precompute(
         Eigen::MatrixXd NADense;
         NADense = Eigen::MatrixXd(NA);
         data.ldlt.compute(NADense);
+        NA = NADense.sparseView();
         switch(data.ldlt.info())
         {
           case Eigen::Success:
@@ -338,6 +340,7 @@ IGL_INLINE bool igl::min_quad_with_fixed_precompute(
       Eigen::MatrixXd QRAuuDense;
       QRAuuDense = Eigen::MatrixXd(QRAuu);
       data.ldlt.compute(QRAuuDense);
+      QRAuu = QRAuuDense.sparseView();
       switch(data.llt.info())
       {
         case Eigen::Success:
